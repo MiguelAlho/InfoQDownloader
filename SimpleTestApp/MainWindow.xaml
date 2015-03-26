@@ -1,0 +1,15 @@
+﻿<Window x:Class="SimpleTestApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TextBox x:Name="basePath" HorizontalAlignment="Left" Height="23" Margin="31,24,0,0" TextWrapping="Wrap" Text="F:\Library\Video\other\InfoQTalks\" VerticalAlignment="Top" Width="370"/>
+        <TextBox x:Name="Url" HorizontalAlignment="Left" Height="23" Margin="31,73,0,0" TextWrapping="Wrap" Text="Url" VerticalAlignment="Top" Width="370"/>
+        <TextBox ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                 x:Name="Result" HorizontalAlignment="Left" Height="164" Margin="31,129,0,0" 
+                 TextWrapping="Wrap" VerticalAlignment="Top" Width="370" IsEnabled="True" />
+        <Button Content="Download" HorizontalAlignment="Left" Margin="425,77,0,0" VerticalAlignment="Top" Width="83" Click="Button_Click"/>
+
+    </Grid>
+</Window>

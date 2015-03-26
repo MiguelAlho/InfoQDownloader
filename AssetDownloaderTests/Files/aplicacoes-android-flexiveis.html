@@ -1,0 +1,1642 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+
+
+
+
+
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>Criando apps Android flex&#xED;veis e f&#xE1;ceis de manter</title>
+    
+	
+	<meta http-equiv="pragma" content="no-cache" />
+<meta http-equiv="cache-control" content="no-cache" />
+<meta http-equiv="expires" content="0" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="copyright" content="&copy; 2006 C4Media" />
+<meta name="author" content="alex[at]c4media[dot]com" />
+
+<meta name="google-site-verification" content="0qInQx_1WYOeIIbxnh7DnXlw1XOxNgAYakO2k4GhNnY" />
+<meta name="msapplication-TileColor" content="#ffffff"/>
+<meta name="msapplication-TileImage" content="/styles/i/logo.jpg"/>
+<meta property="wb:webmaster" content="3eac1729a8bbe046" />
+
+	
+	
+	<link href='http://fonts.googleapis.com/css?family=Gentium+Book+Basic' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" type="text/css" media="screen" href="http://cdn4.infoq.com/styles/site.css?20130508_1"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="http://cdn4.infoq.com/styles/site_pt.css"/>
+    <link rel="shortcut icon" href="http://cdn2.infoq.com/favicon.ico?20110420" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="http://cdn2.infoq.com/apple-touch-icon.png?20110420" />
+	<link rel="stylesheet" href="http://cdn4.infoq.com/scripts/ui/bxSlider/bx_styles/bx_styles.css" type="text/css" />
+	<link rel="stylesheet" href="http://cdn4.infoq.com/scripts/ui/jquery.jscrollpane.css" type="text/css" />
+
+    <script type="text/javascript">
+        var InfoQConstants = {};
+        InfoQConstants.language = 'pt';
+        InfoQConstants.countryCode = '/br';
+    </script>
+    <script type="text/javascript" src="http://cdn1.infoq.com/scripts/combinedJs.js?20110704"></script>
+	<script type="text/javascript" src="/scripts/jquery/jquery.tools-1.2.7.min.js"></script>	
+	<script type="text/javascript" src="http://cdn3.infoq.com/scripts/ui/bxSlider/jquery.bxSlider.min.js"></script>
+	<script type="text/javascript" src="http://cdn4.infoq.com/scripts/ui/bxSlider/jquery.easing.1.3.js"></script>
+	<script type="text/javascript" src="http://cdn1.infoq.com/scripts/ui/jquery.lightbox_me.js"></script>
+	<script type="text/javascript" src="http://cdn1.infoq.com/scripts/ui/jquery.mousewheel.js"></script>
+	<script type="text/javascript" src="http://cdn2.infoq.com/scripts/ui/jquery.jscrollpane.min.js"></script>
+    <script type="text/javascript" src="http://cdn2.infoq.com/scripts/ui/jquery.hoverIntent.js"></script>
+	<script type="text/javascript" src="http://cdn3.infoq.com/scripts/ui/misc.js"></script>
+        <script type="text/javascript">
+
+            var JSi18n = JSi18n || {}; // define only if not already defined
+            JSi18n.error = 'Erro';
+            JSi18n.login_unverifiedAccount = 'Cadastro não encontrado';
+            JSi18n.contentSummary_showPresentations_1 = '';
+            JSi18n.contentSummary_showPresentations_2 = '';
+            JSi18n.contentSummary_showPresentations_3 = '';
+            JSi18n.contentSummary_showInterviews_1 = '';
+            JSi18n.contentSummary_showInterviews_2 = '';
+            JSi18n.contentSummary_showInterviews_3 = '';
+            JSi18n.contentSummary_showMinibooks_1 = '';
+            JSi18n.contentSummary_showMinibooks_2 = '';
+            JSi18n.login_sendingRequest = 'Enviando...';
+            JSi18n.bookmark_saved = '<q>&nbsp;&nbsp;&nbsp;Gravado&nbsp;&nbsp;&nbsp;&nbsp;</q>';
+            JSi18n.bookmark_error = '<q style=color:black;>&nbsp;&nbsp;&nbsp;Erro&nbsp;&nbsp;&nbsp;&nbsp;</q>';
+            JSi18n.categoryManagement_showpopup_viewAllLink_viewAllPrefix = 'Ver tudo sobre';
+            JSi18n.categoryManagement_showpopup_viewAllLink_viewAllSuffix = '';
+            JSi18n.categoryManagement_showpopup_includeExcludeLink_Exclude = 'Excluir';
+            JSi18n.categoryManagement_showpopup_includeExcludeLink_Include = 'Incluir';
+
+        </script>
+    <script type="text/javascript">
+        function createOverFunction(i) {
+            var pixels = i * 129;
+            return function () {
+                $('ul.menu > li .top_submenu.c' + i).css('left', '-' + pixels + 'px');
+            }
+        };
+        function createOutFunction(i) {
+            return function () {
+                $('ul.menu > li .top_submenu.c' + i).css('left', '-999em');
+            }
+        }
+        $(function () {
+            for (var i = 0; i < 5; i++) {
+                $('ul.menu > li').has('.top_submenu.c' + i).hoverIntent({
+                    sensitivity: 15,
+                    interval: 150,
+                    over: createOverFunction(i),
+                    out: createOutFunction(i)
+                });
+            }
+        });
+    </script>
+	
+
+
+
+
+
+
+
+<script type='text/javascript'>
+    var googletag = googletag || {};
+    googletag.cmd = googletag.cmd || [];
+    (function () {
+        var gads = document.createElement('script');
+        gads.async = true;
+        gads.type = 'text/javascript';
+        var useSSL = 'https:' == document.location.protocol;
+        gads.src = (useSSL ? 'https:' : 'http:') + '//www.googletagservices.com/tag/js/gpt.js';
+        var node = document.getElementsByTagName('script')[0];
+        node.parentNode.insertBefore(gads, node);
+    })();
+
+
+    googletag.cmd.push(function () {
+        googletag.defineSlot('/5286733/pt_geo_banner_bottom', [728, 90], 'id_geo_banner_ad').addService(googletag.pubads());
+        googletag.defineSlot('/5286733/pt_300x250_banner_top', [300, 250], 'id_300x250_banner_top').addService(googletag.pubads());
+        googletag.defineSlot('/5286733/pt_300x250_banner_bottom', [300, 250], 'id_300x250_banner_bottom').addService(googletag.pubads());
+        googletag.defineSlot('/5286733/pt_textlink1', [250, 60], 'id_ad_textlink1').addService(googletag.pubads());
+        googletag.defineSlot('/5286733/pt_textlink2', [250, 60], 'id_ad_textlink2').addService(googletag.pubads());
+        googletag.defineSlot('/5286733/pt_textlink3', [250, 60], 'id_ad_textlink3').addService(googletag.pubads());
+        /*	googletag.defineSlot('/5286733/pt_textlink4', [120, 100], 'id_ad_textlink4').addService(googletag.pubads());
+            googletag.defineSlot('/5286733/pt_textlink5', [120, 100], 'id_ad_textlink5').addService(googletag.pubads());*/
+        googletag.defineSlot('/5286733/pt_300x250_category', [300, 250], 'id_300x250_category').addService(googletag.pubads());
+        googletag.defineSlot('/5286733/pt_300x250_banner_searchResults', [300, 250], 'id_300x250_banner_searchResults').addService(googletag.pubads());
+        googletag.pubads().enableSingleRequest();
+        googletag.pubads().collapseEmptyDivs();
+        googletag.enableServices();
+    });
+</script>
+
+
+	
+	
+        <script type="text/javascript">var NREUMQ = NREUMQ || []; NREUMQ.push(["mark", "firstbyte", new Date().getTime()])</script>
+            
+            <script type="text/javascript" src="http://cdn4.infoq.com/scripts/forum.js"></script>
+            <link rel="image_src" href="http://cdn4.infoq.com/styles/br/i/infoq-logo1.jpg"/>
+            <link rel="image_src" href="/resource/presentations/aplicacoes-android-flexiveis/pt/mediumimage/Erich-Egert_270.jpg"/>
+            <meta name="keywords" content="aplicacoes android flexiveis,Arquitetura e Design,Desenvolvimento,Android,Mobile,MobileConf 2013,Sistemas Operacionais,"/>
+            <meta name="description" content="Suas aplica&#xE7;&#xF5;es Android possuem Activities com muitas linhas de c&#xF3;digo e muitos m&#xE9;todos com switch? Comportam-se bem em Tablets ou em vers&#xF5;es anteriores do Android? Veja como deixar c&#xF3;digo e layouts mais flex&#xED;veis utilizando Fragments e Application Resources; reduza o acoplamento criando callbacks; e fa&#xE7;a bom uso das ferramentas dispon&#xED;veis na plataforma Android para facilitar a manuten&#xE7;&#xE3;o."/>
+            <meta name="tprox" content="1368106200000" />
+        
+        <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/swfobject/2.1/swfobject.js"></script>
+        
+            <script type="text/javascript" src="http://cdn4.infoq.com/scripts/video/player/PlayerPresentation_mobile.js"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    init();
+                });
+            </script>
+        
+        
+        
+        <script type="text/javascript">
+            var slides = new Array('/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl1.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl2.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl3.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl4.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl5.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl6.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl7.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl8.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl9.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl10.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl11.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl12.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl13.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl14.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl15.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl16.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl17.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl18.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl19.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl20.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl21.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl22.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl23.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl24.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl25.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl26.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl27.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl28.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl29.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl30.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl31.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl32.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl33.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl34.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl35.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl36.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl37.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl38.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl39.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl40.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl41.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl42.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl43.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl44.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl45.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl46.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl47.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl48.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl49.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl50.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl51.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl52.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl53.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl54.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl55.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl56.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl57.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl58.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl59.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl60.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl61.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl62.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl63.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl64.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl65.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl66.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl67.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl68.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl69.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl70.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl71.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl72.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl73.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl74.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl75.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl76.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl77.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl78.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl79.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl80.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl81.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl82.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl83.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl84.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl85.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl86.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl87.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl88.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl89.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl90.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl91.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl92.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl93.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl94.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl95.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl96.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl97.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl98.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl99.jpg', '/resource/presentations/aplicacoes-android-flexiveis/pt/slides/sl100.jpg');
+            var TIMES = new Array(0, 71, 86, 119, 129, 147, 150, 161, 176, 190, 217, 226, 240, 261, 281, 297, 317, 342, 392, 405, 418, 422, 448, 489, 491, 494, 509, 519, 537, 590, 601, 613, 619, 623, 636, 646, 665, 699, 707, 712, 745, 771, 801, 825, 845, 853, 874, 877, 896, 920, 924, 939, 960, 1051, 1062, 1069, 1081, 1089, 1110, 1127, 1151, 1181, 1203, 1233, 1271, 1306, 1350, 1364, 1373, 1405, 1412, 1460, 1478, 1495, 1507, 1520, 1574, 1596, 1638, 1664, 1675, 1729, 1773, 1804, 1810, 1845, 1857, 1876, 1915, 1936, 1963, 1966, 1973, 1980, 2002, 2051, 2080, 2156, 2174, 2183, 2855);
+            var EXPRESSINSTALL_SWF = "http://d1snlc0orfrhj.cloudfront.net/static/flash/expressinstall.swf";
+
+
+            var jsclassref = 'presentations-br/Mobileconf-ErichEgert-AplicacoesFlexiveis.mp4';
+
+        </script>
+        <script type='text/javascript' src='http://cdn3.infoq.com/scripts/video/PresentationUI.js'></script>
+        <script type='text/javascript' src='http://cdn3.infoq.com/scripts/ui/jquery.tipsy.js'></script>
+        <link rel="stylesheet" href="http://cdn4.infoq.com/styles/tipsy.css" type="text/css" />
+    	<script src="http://cdn2.infoq.com/scripts/jquery/jquery.tinyscrollbar.min.js" type="text/javascript"></script>
+        <!-- i18n -->
+        <script type="text/javascript">
+            var i18nFullScreen = 'Tela cheia';
+            var i18nMinimize = 'Minimizado';
+        </script>
+    
+</head>
+
+<body >
+
+<div id="wrapper">
+	<!--	#######		SITE START	#########	 -->
+	<div id="site">
+		
+
+
+
+
+
+
+
+
+
+<div id="topInfo">
+    
+	<div class="clear"></div>
+</div>
+
+	
+<!--	#######		HEADER START	#########	 -->
+<div id="header">
+	<div class="top_explain">Disseminando conhecimento e inovação em desenvolvimento de software corporativo.</div>
+	<!--	#######		search	#########	 -->
+	<div class="search_cls">
+	
+		<form name="search" id="search" action="/br/search.action" method="post" enctype="multipart/form-data">
+			<fieldset>
+				<input type="text" id="keyword" name="queryString" class="searchInput" value="Texto a pesquisar" onfocus="if(this.value=='Texto a pesquisar'){ this.value = ''; }" onblur="if(this.value==''){ this.value = 'Texto a pesquisar'; }" />
+				<input type="hidden" id="page" name="page"/>
+                <input type="hidden" id="searchOrder" size="15" name="searchOrder">
+				<input type="submit" value="" id="Submit1" class="submitCls" />
+			</fieldset>
+		</form>
+		
+	    
+
+
+
+
+
+
+
+
+<!--	#######		login	#########	 -->
+
+	<div id="login">
+		<a class="logged_in" href="javascript:;" title="Login"><span>Miguel</span></a>
+		<div class="login_overlay">
+			<!--	html for login box	-->
+			<div id="popupLogin">
+				<div class="welcome_title">
+					Bem-vindo(a), 
+					Miguel
+					!
+				</div>
+				<ul class="logged_submenu">
+					<li><a href="/br/showbookmarks.action" title="My Bookmarks">Favoritos</a></li>
+					<li><a href="/br/edituser.action" title="Preferences">Preferências</a></li>
+				</ul>
+				<div class="login-type-in">
+					Configure seus principais interesses
+				</div>
+				
+											
+				
+
+
+
+
+
+
+<form>
+<fieldset>
+	<ul class="logged_submenu">
+		
+			<li>
+				<input type="checkbox" name="development" value="true" checked="checked" id="hpersona6825" onclick="includeExcludeCommunity(this, true);"/>
+
+				<label class="label_logged_in" for="development">
+					Desenvolvimento
+				</label>
+			</li>
+		
+			<li>
+				<input type="checkbox" name="architecture-design" value="true" checked="checked" id="hpersona6826" onclick="includeExcludeCommunity(this, true);"/>
+
+				<label class="label_logged_in" for="architecture-design">
+					Arquitetura e Design
+				</label>
+			</li>
+		
+			<li>
+				<input type="checkbox" name="process-practices" value="true" checked="checked" id="hpersona6827" onclick="includeExcludeCommunity(this, true);"/>
+
+				<label class="label_logged_in" for="process-practices">
+					Processos e Pr&#xE1;ticas
+				</label>
+			</li>
+		
+			<li>
+				<input type="checkbox" name="operations-infrastructure" value="true" checked="checked" id="hpersona6828" onclick="includeExcludeCommunity(this, true);"/>
+
+				<label class="label_logged_in" for="operations-infrastructure">
+					Opera&#xE7;&#xF5;es e Infraestrutura
+				</label>
+			</li>
+		
+			<li>
+				<input type="checkbox" name="enterprise-architect" value="true" checked="checked" id="hpersona6829" onclick="includeExcludeCommunity(this, true);"/>
+
+				<label class="label_logged_in" for="enterprise-architect">
+					Arquitetura Corporativa
+				</label>
+			</li>
+		
+	</ul>
+</fieldset>
+</form>
+				<p class="notes">Estas opções têm efeito sobre o conteúdo visto na página inicial do InfoQ Brasil e no seu feed RSS. Clique em Preferências para ter acesso a outras opções de personalização.</p>
+				<a id="logout" class="logout" href="/br/logout.action">
+					Sair
+				</a>
+			</div>
+			<!--	html for login box 	-->
+		</div>	
+	</div>
+
+
+
+		
+	</div>
+	
+	<div class="clear"></div>
+	
+	<!--	#######		logo	#########	 -->
+	<div class="logo">
+		<a class="image" href="/br/" title=""><img src="http://cdn4.infoq.com/styles/i/logo.jpg" alt="" border="0" /></a>
+		<div class="clear"></div>
+	    
+
+
+
+
+
+
+
+
+<ul class="langs">
+	<li><a href="/">En</a> |</li>
+	<li><a href="/cn/">中文</a> |</li>
+	<li><a href="/jp/">日本</a> |</li>
+	<li><a class="active" href="#" onclick="return false;" title="InfoQ Brasil">Brasil</a></li>
+</ul>
+<div class="clear"></div>
+
+
+		<div class="clear"></div>
+	</div>
+	
+    	
+
+
+
+
+
+
+
+
+		<!--	#######		menu	#########	 -->
+		<ul class="menu">
+			<li>
+				<a class="main" href="/br/development/" title="Development"><span>Desenvolvimento</span></a>
+				<div class="top_submenu c0">
+					<div class="scroll-pane">
+						<ul class="top_submenu_links">
+				            <li><a href="/br/java/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Java">Java</a></li>
+                            <li><a href="/br/dotnet/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title=".Net">.Net</a></li>
+                            <li><a href="/br/cloud-computing/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Cloud Computing">Cloud Computing</a></li>
+                            <li><a href="/br/mobile/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Mobile">Mobile</a></li>
+                            <li><a href="/br/HTML5Topic/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="HTML 5">HTML 5</a></li>
+                            <li><a href="/br/javascript/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="JavaScript">JavaScript</a></li>
+                            <li><a href="/br/ruby/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Ruby">Ruby</a></li>
+                            <li><a href="/br/dsl/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="DSLs">DSLs</a></li>
+                            <li><a href="/br/python/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Python">Python</a></li>              
+                            <li><a href="/br/PaaS/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="PaaS">PaaS</a></li>
+						</ul>
+					</div>
+					
+					<div class="menu_article">
+						<h2>Destaques de: <span id="developmentHDLabel"></span></h2>
+						<h3 id="developmentHDTitle"></h3>
+						<div class="clear"></div>
+						<p>
+							<img id="developmentHDImg" src="" alt="" border="0" />
+							<span id="developmentHDSummary"></span>
+						</p>
+						<div class="clear"></div>	
+						<div class="alignCenter">
+							<a class="view_all_categ" href="/br/development/">
+								<span>Ver todos de<b id="developmentHDLabel2">Desenvolvimento</b></span>
+							</a>
+						</div>
+						<div class="clear"></div>	
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</li>
+			
+			<li>
+				<a class="main" href="/br/architecture-design/" title="Architecture &amp; Design"><span>Arquitetura <br/>e Design</span></a>
+				<div class="top_submenu c1">
+					<div class="scroll-pane">
+						<ul class="top_submenu_links">
+                            <li><a href="/br/Modeling/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Modelagem">Modelagem</a></li>
+                            <li><a href="/br/performance-scalability/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Performance &amp; Escalabilidade">Performance &amp; Escalabilidade</a></li>              
+                            <li><a href="/br/Behavior-Driven-Development/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="BDD">BDD</a></li>
+                            <li><a href="/br/AOP/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="AOP">AOP</a></li>
+                            <li><a href="/br/DesignPattern/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Design Pattern">Design Pattern</a></li>
+                            <li><a href="/br/Security/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Segurança">Segurança</a></li>
+                            <li><a href="/br/cloud-computing/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Cloud Computing">Cloud Computing</a></li>
+                            <li><a href="/br/soa_platforms/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="SOA">SOA</a></li>
+						</ul>
+					</div>
+					
+					<div class="menu_article">
+						<h2>Destaques de: <span id="architecture-designHDLabel"></span></h2>
+						<h3 id="architecture-designHDTitle"></h3>
+						<div class="clear"></div>
+						<p>
+							<img id="architecture-designHDImg" src="" alt="" border="0" />
+							<span id="architecture-designHDSummary"></span>
+						</p>
+						<div class="clear"></div>	
+						<div class="alignCenter">
+							<a class="view_all_categ" href="/br/architecture-design/">
+								<span>Ver todos de<b id="architecture-designHDLabel2">Arquitetura e Design</b></span>
+							</a>
+						</div>
+						<div class="clear"></div>	
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</li>
+			<li>
+				<a class="main" href="/br/process-practices/" title="Process &amp; Practices"><span>Processos <br/>e Práticas</span></a>
+				<div class="top_submenu c2">
+					<div class="scroll-pane">
+						<ul class="top_submenu_links">
+                            <li><a href="/br/agile/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Agile">Agile</a></li>
+                            <li><a href="/br/Leadership/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Leadership">Leadership</a></li>
+                            <li><a href="/br/agile_techniques/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Técnicas Ágeis">Técnicas Ágeis</a></li>
+                            <li><a href="/br/methodologies/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Metodologias">Metodologias</a></li>
+                            <li><a href="/br/continuous_integration/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Integração Contínua">Integração Contínua</a></li>
+                            <li><a href="/br/lean/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Lean/Kanban">Lean/Kanban</a></li>
+                            <li><a href="/br/cust_requirements/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Clientes e Requisitos">Clientes e Requisitos</a></li>
+						</ul>
+					</div>
+					
+					<div class="menu_article">
+						<h2>Destaques de: <span id="process-practicesHDLabel"></span></h2>
+						<h3 id="process-practicesHDTitle"></h3>
+						<div class="clear"></div>
+						<p>
+							<img id="process-practicesHDImg" src="" alt="" border="0" />
+							<span id="process-practicesHDSummary"></span>
+						</p>
+						<div class="clear"></div>	
+						<div class="alignCenter">
+							<a class="view_all_categ" href="/br/process-practices/">
+								<span>Ver todos de<b id="process-practicesHDLabel2">Processos e Práticas</b></span>
+							</a>
+						</div>
+						<div class="clear"></div>	
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</li>
+			<li class="">
+				<a class="main" href="/br/operations-infrastructure/" title="Operations &amp; Infrastructure"><span>Operações <br/>e Infraestrutura</span></a>
+				<div class="top_submenu c3">
+					<div class="scroll-pane">
+						<ul class="top_submenu_links">
+                            <li><a href="/br/performance-scalability/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Performance &amp; Escalabilidade">Performance &amp; Escalabilidade</a></li>
+                            <li><a href="/br/cloud-computing/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Cloud Computing">Cloud Computing</a></li>
+                            <li><a href="/br/virtualization/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Virtualização">Virtualização</a></li>
+                            <li><a href="/br/ApplicationServers/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Servidores de Aplicação">Servidores de Aplicação</a></li>
+						</ul>
+					</div>
+					
+					<div class="menu_article">
+						<h2>Destaques de: <span id="operations-infrastructureHDLabel"></span></h2>
+						<h3 id="operations-infrastructureHDTitle"></h3>
+						<div class="clear"></div>
+						<p>
+							<img id="operations-infrastructureHDImg" src="" alt="" border="0" />
+							<span id="operations-infrastructureHDSummary"></span>
+						</p>
+						<div class="clear"></div>	
+						<div class="alignCenter">
+							<a class="view_all_categ" href="/br/operations-infrastructure/">
+								<span>Ver todos de<b id="operations-infrastructureHDLabel2">Operações e Infraestrutura</b></span>
+							</a>
+						</div>
+						<div class="clear"></div>	
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</li>
+			<li class="last">
+				<a class="main" href="/br/enterprise-architect/" title="Enterprise Architecture"><span>Arquitetura <br/>Corporativa</span></a>
+				<div class="top_submenu c4">
+					<div class="scroll-pane">
+						<ul class="top_submenu_links">
+                            <li><a href="/br/enterprise-architecture/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Arquitetura Corporativa">Arquitetura Corporativa</a></li>
+                            <li><a href="/br/bpm/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="BPM">BPM</a></li>
+                            <li><a href="/br/business_it_alignment/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Business/IT Alignment">Business/IT Alignment</a></li>
+                            <li><a href="/br/EAI/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Integration (EAI)">Integration (EAI)</a></li>              
+                            <li><a href="/br/Governance/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Governança">Governança</a></li>
+                            <li><a href="/br/web20/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Web 2.0">Web 2.0</a></li>
+                            <li><a href="/br/soa/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="SOA">SOA</a></li>
+						</ul>
+					</div>
+					
+					<div class="menu_article">
+						<h2>Destaques de: <span id="enterprise-architectHDLabel"></span></h2>
+						<h3 id="enterprise-architectHDTitle"></h3>
+						<div class="clear"></div>
+						<p>
+							<img id="enterprise-architectHDImg" src="" alt="" border="0" />
+							<span id="enterprise-architectHDSummary"></span>
+						</p>
+						<div class="clear"></div>	
+						<div class="alignCenter">
+							<a class="view_all_categ" href="/br/enterprise-architect/">
+								<span>Ver todos de<b id="enterprise-architectHDLabel2">Arquitetura Corporativa</b></span>
+							</a>
+						</div>
+						<div class="clear"></div>	
+					</div>
+					
+					<div class="clear"></div>
+				</div>
+			</li>
+		</ul>
+
+		
+     	
+
+
+
+
+
+
+
+
+
+		
+		<div class="clear"></div>
+		
+    	
+
+
+
+
+
+
+
+
+<!--	#######		submenu	#########	 -->
+<ul class="submenu">
+    <li><a href="/br/agile/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Mobile">Agile</a></li>
+    <li><a href="/br/java/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Mobile">Java</a></li>
+    <li><a href="/br/mobile/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Mobile">Mobile</a></li>
+    <li><a href="/br/HTML5Topic/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="HTML 5">HTML 5</a></li>
+    <li><a href="/br/javascript/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="JavaScript">JavaScript</a></li>
+    <li><a href="/br/cloud-computing/?utm_source=infoq&utm_medium=header_graybar&utm_campaign=topic_clk" title="Cloud Computing">Cloud Computing</a></li>              
+</ul>
+
+    <div class="all_topics"><a href="/br/topics">Todos os tópicos</a></div>
+    <div class="all_topics"><a style="color:#106CB6; text-shadow:1px 1px 1px #A7A7A7; margin-right:20px; font-size:13px;" href="http://www.infoq.com/news/2013/04/infoq-redesign">Novo design</a></div>
+
+
+	
+		
+		
+	<div class="clear"></div>
+
+	
+
+
+
+
+
+
+
+<div class="breadcrumbs">
+	<span class="first">Você está aqui:</span>
+	<a class="normal" href="/br" title="Início">Início</a>
+	
+		
+            
+            
+                <a class="normal" href="/br/presentations" title="Apresentações">Apresentações</a>
+                
+		
+		<span class="last">Criando apps Android flex&#xED;veis e f&#xE1;ceis de manter</span>
+	
+	
+</div>
+
+	
+	<div class="clear"></div>
+</div>		
+<!--	#######		HEADER END	#########	 -->
+	
+			
+		<!--	#######		CONTENT START	#########	 -->
+		<div id="content">
+			
+        
+            
+        
+        <a id="exitFullScreenMode" class="fullscreenIdentifier" href="javascript:;" title="">
+            <span>Em tela cheia</span>
+            <div><strong>Fechar tela cheia</strong></div>
+        </a>
+		<!--	#######		left side START	#########	 -->
+
+		<div class="article_page_left presentation_full">
+			<h1 class="general">
+				<div>Criando apps Android flex&#xED;veis e f&#xE1;ceis de manter</div> 
+                <span class="recorded">Gravado em:<br>
+                    <a title="" href="http://www.mobileconf.com.br/">
+                        <img id="promoImage" border="0" alt="" src="/resource/presentations/aplicacoes-android-flexiveis/pt/promoimage/logo.png">
+                    </a>
+                </span>
+            </h1>
+            <span class="author_general">
+                por 
+                <a
+	
+	href="/br/author/Erich-Egert"
+
+ class="editorlink f_taxonomyEditor">
+
+                    Erich Egert
+                </a>
+
+                em
+                09 Mai 2013
+                <em>|</em>
+                
+            </span>
+
+            
+
+
+
+
+
+
+
+<ul class="share_this">
+	<li class="space">Compartilhar</li>
+	<li>
+		<a href="http://www.addthis.com/bookmark.php?v=250&amp;username=infoq" class="standard addthis_button" style="background:none;text-decoration:none;color:#1C497B; padding:0 2px; float:left; font-weight: bold;font-size: 85%;">
+			<img src="http://s7.addthis.com/static/btn/sm-plus.gif"  width="16" height="15" border="0" alt="Share" />
+		</a>
+	</li>
+	
+	<li>
+		<span class="addthis_separator">|&nbsp;</span>
+	</li>
+	
+	<li><a class="standard addthis_button_facebook"></a></li>
+	<li><a class="standard addthis_button_digg"></a></li>
+	<li><a class="standard addthis_button_dzone"></a></li>	
+	<li><a class="standard addthis_button_twitter"></a></li>
+	<li><a class="standard addthis_button_reddit"></a></li>
+	<li><a class="standard addthis_button_delicious"></a></li>
+	<li><a class="standard addthis_button_email"></a></li>
+	
+	
+		<li><a id="bookmarkBtn" href="#" onclick="Bookmarks.bookmarkContent('presentations', 'aplicacoes-android-flexiveis');return false;" class="read_later" title=""><q>Marcar como favorito</q></a></li>
+		<li><a class="reading_list" style="margin-right:104px;" href="/br/showbookmarks.action"><q>Favoritos</q></a></li>
+	
+</ul>
+
+<script type="text/javascript">
+    var addthis_config = {
+        data_ga_property: 'UA-6608133-2',
+        data_ga_social: true
+    };
+</script>
+
+
+<!-- AddThis Button END -->
+
+
+
+			<div class="clear"></div>
+
+			<!-- MENU Prezentation -->
+			<div class="presentation_type">
+				<ul>
+					<li>Mostrar apresentação</li>
+					<li><a id="horizontal" class="presentation_links current" rel="tipsy" href="javascript:;" original-title="Horizontal">&nbsp;</a></li>
+					<li><a id="vertical" class="presentation_links" rel="tipsy" href="javascript:;" original-title="Vertical">&nbsp;</a></li>
+					<li><a id="full" class="presentation_links" rel="tipsy" href="javascript:;" original-title="Tela cheia">&nbsp;</a></li>
+				</ul>
+				<div class="clear"></div>
+			</div>
+
+			<div class="clear"></div>
+
+			<!-- Prezentation horizontal version start -->
+            <div id="pr_horizontal" class="presentation_v1">
+                <div id="top">
+                    <div class="leftSide">
+                        <div class="video">
+                            
+						    	<script type="text/javascript">
+						    	    SlideSynchronizer.setTimes(TIMES);
+						    	    SlideSynchronizer.playerId = "video";
+							    </script>	    
+                                <video poster="/styles/i/logo_scrubber.png" id="video" controls="controls" width="320" height="265" onplay="SlideSynchronizer.start();">
+                                    <source src="http://d1snlc0orfrhj.cloudfront.net/presentations-br/Mobileconf-ErichEgert-AplicacoesFlexiveis.mp4" />
+                                </video>
+                            
+                            
+                        </div>
+                        
+                            <div class="download_presentation">
+                                <ul>
+                                    
+                                        <li>
+                                            <a id="mp3" title="" href="javascript:;">MP3</a>
+                                            <form method="post" action="/mp3download.action" target="_blank" id="mp3Form">
+                                                <input type="hidden" name="filename" value="presentations-br/Mobileconf-ErichEgert-AplicacoesFlexiveis.mp3"/>
+                                            </form>
+                                        </li>
+                                    
+                                    
+                                        <li>|</li>
+                                    
+                                    
+                                        <li>
+                                            <a id="slides" title="" href="javascript:;">Slides</a>
+                                            <form method="post" action="/pdfdownload.action" target="_blank" id="pdfForm">
+                                                <input type="hidden" name="filename" value="presentations-br/Mobileconf-ErichEgert-AplicacoesFlexiveis.pdf"/>
+                                            </form>
+                                        </li>
+                                    
+                                        <li>Download</li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        
+						<div class="summary_height_fix_box" id="summary_height_fix_box">
+							<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+							<div class="viewport">
+								<div class="overview">
+									<p id="summary"> 							
+			                            <strong>Resumo</strong><br>
+			                            Suas aplica&#xE7;&#xF5;es Android possuem Activities com muitas linhas de c&#xF3;digo e muitos m&#xE9;todos com switch? Comportam-se bem em Tablets ou em vers&#xF5;es anteriores do Android? Veja como deixar c&#xF3;digo e layouts mais flex&#xED;veis utilizando Fragments e Application Resources; reduza o acoplamento criando callbacks; e fa&#xE7;a bom uso das ferramentas dispon&#xED;veis na plataforma Android para facilitar a manuten&#xE7;&#xE3;o.
+									</p>
+								</div>
+							</div>
+						</div>
+                        <div id="id_300x250_banner_top">
+                            <script type='text/javascript'>
+                                googletag.cmd.push(function () { googletag.display('id_300x250_banner_top'); });
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="rightSide">
+						<div class="right_text_fix" id="right_text_fix">
+							<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+							<div class="viewport">
+								<div class="overview"></div>
+							</div>
+						</div>
+						<div id="slideContainer" class="slides">
+                            <div id="slide"></div>
+						</div>
+                        <div class="clear"></div>
+
+
+						<div class="text_height_fix_box" id="text_height_fix_box">
+							<div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+							<div class="viewport">
+								<div class="overview">
+			                        <h3 id="biolabel">Minibiografia</h3>
+									<p id="biotext">
+										Erich Egert &#xE9; formado em Administra&#xE7;&#xE3;o, trabalha h&#xE1; mais de cinco anos com desenvolvimento de software usando a linguagem Java, especialmente para a &#xE1;rea de sa&#xFA;de. Trabalha na Caelum como instrutor e desenvolvedor.
+									</p>
+									<p id="conference">
+			                            <img border="0" alt="" src="/resource/presentations/aplicacoes-android-flexiveis/pt/promoimage/logo.png">
+			                            A primeira MobileConf aconteceu em S&#xE3;o Paulo no dia 5 de abril, e cobriu toda a gama de desenvolvimento mobile: Android, iOS, UX, Mobile Web e mais.
+									</p>
+								</div>
+							</div>
+							
+						</div>
+                    </div>
+                </div>
+                <div class="clear"></div>
+                <div id="bottom"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="random_links">
+                <ul>
+                    
+                        
+                        
+                        
+                        
+                    	<li><a><span class="gray_color">Sections</span></a></li>
+				<li><a class="f_taxonomy" href="/br/architecture-design" name="architecture-design" id="6,826"><b>Arquitetura e Design</b></a></li>				<li><a class="f_taxonomy" href="/br/development" name="development" id="6,825"><b>Desenvolvimento</b></a></li>
+	<li><a><span class="gray_color">Topics</span></a></li>
+					<li><a class="f_taxonomy" href="/br/android" name="android" id="5,019">Android</a></li>					<li><a class="f_taxonomy" href="/br/mobile" name="mobile" id="5,021">Mobile</a></li>					<li><a class="f_taxonomy" href="/br/OS" name="OS" id="4,936">Sistemas Operacionais</a></li>					<li><a class="f_taxonomy" href="/br/MobileConf" name="MobileConf" id="7,939">MobileConf 2013</a></li>
+                </ul>
+            </div>
+            <div class="vendor_vs_popular">
+                
+                <div class="leftS">
+                	
+                	
+					
+					
+                    
+
+
+
+
+
+
+
+
+<div class="related_sponsors wholething">
+    <div class="related_editorial recommended">
+        <p class="title">Conteúdo editorial relacioado</p>
+        <div id="editorial_links" class="links">
+            <div class="clear"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        $.ajax({
+            url: "/api/recommendationlinks.action",
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            type: 'POST',
+            data: { "topicIds": "990,3340,317,-1000,-1000", "title": "Criando apps Android flex&#xED;veis e f&#xE1;ceis de manter", "contentPath": "/presentations/aplicacoes-android-flexiveis", "language": "pt" },
+            success: displayRelatedContent,
+            async: false
+        });
+        function displayRelatedContent(data) {
+            var trackingCode = "?utm_source=infoq&utm_medium=related_content_link&utm_campaign=relatedContent_presentations_clk";
+            if (data.length > 0) {
+                for (var i = 0; i < data.length; i++) {
+                    if (i === 4) {
+                        break;
+                    }
+                    var link = $('<h3 title="" class="' + data[i].contentType + '">\n\
+                                    <a title="" href="' + data[i].url + trackingCode +
+                                    '">' + data[i].title + '</a></h3>');
+                    $('#editorial_links').append(link);
+                }
+                $('.related_sponsors.wholething > .related_editorial.recommended').css('display', 'block');
+            }
+        }
+    </script>                    
+    
+        <div class="clear"></div>
+        <div class="related_research"></div>
+</div>
+        
+    <script type="text/javascript">
+        $.ajax({
+            type: "POST",
+            url: '/widgets/researchHorizontalWidget.action',
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            data: {
+                "path": 'aplicacoes-android-flexiveis',
+                "uriMapping": 'presentations'
+            },
+            success: displayResearch,
+            error: function () {
+                // fail silently
+            },
+            async: false
+        });
+        function displayResearch(data) {
+            if (InfoQConstants.language != 'en') {
+                return;
+            }
+            if (data.matchedList && data.matchedList.length > 0) {
+                $('.related_research').append('<p class="title">Pesquisas relacionadas</p>')
+                for (var i = 0; i < data.matchedList.length; i++) {
+                    var link = $('<a class="rel_results" title="" href="' + data.matchedList[i][0] +
+                            '?utm_source=infoq&utm_medium=related_research_link&utm_campaign=relatedResearch_presentations_clk' + '">' +
+                                   '<img border="0" alt="" src="' + data.matchedList[i][2] + '">' +
+                                    data.matchedList[i][1] +
+                                '</a>');
+                    $('.related_research').append(link);
+                }
+                if (data.latestList) {
+                    for (var i = 0; i < data.latestList.length; i++) {
+                        var link = $('<a class="rel_results" title="" href="' + data.latestList[i][0] +
+                            '?utm_source=infoq&utm_medium=related_research_link&utm_campaign=relatedResearch_presentations_clk' + '">' +
+                            '<img border="0" alt="" src="' + data.latestList[i][2] + '">' +
+                            data.latestList[i][1] +
+                            '</a>');
+                        $('.related_research').append(link);
+                    }
+                }
+                $('.related_research').show();
+            }
+        }
+    </script>	
+    
+    <script type="text/javascript">
+
+        $(function () {
+            var recommendedColumn = $('.related_sponsors.wholething > .related_editorial.recommended');
+            var recommendedExists = $(recommendedColumn).css('display') === 'block';
+            var vcrColumn = $('.related_sponsors.wholething > .related_editorial.sponsored');
+            var vcrExists = $(vcrColumn).length === 1;
+            var sponsorshipColumn = $('.related_sponsors > .paid_section')
+            var sponsorshipExists = $(sponsorshipColumn).length === 1;
+            var researchRow = $('.related_research');
+            var researchExists = $(researchRow).css('display') === 'block';
+
+            if (recommendedExists || vcrExists || sponsorshipExists || researchExists) {
+                $('.related_sponsors.wholething').show(); // show the big related box
+            }
+
+            // in case all three available, leave now
+            if (recommendedExists && vcrExists && sponsorshipExists) {
+                return;
+            }
+            // in case only two of them available
+            if (recommendedExists && vcrExists && !sponsorshipExists) {
+                $(recommendedColumn).addClass('only2');
+                $(vcrColumn).addClass('only2last');
+            } else if (recommendedExists && sponsorshipExists && !vcrExists) {
+                $(recommendedColumn).addClass('only2');
+                $(sponsorshipColumn).addClass('only2last');
+            } else if (vcrExists && sponsorshipExists && !recommendedExists) {
+                $(vcrColumn).addClass('only2');
+                $(sponsorshipColumn).addClass('only2last');
+            }
+                // in case only one is available
+            else if (recommendedExists && !vcrExists && !sponsorshipExists) {
+                $(recommendedColumn).addClass('only1');
+            } else if (vcrExists && !recommendedExists && !sponsorshipExists) {
+                $(vcrColumn).addClass('only1');
+            } else if (sponsorshipExists && !recommendedExists && !vcrExists) {
+                $(sponsorshipColumn).addClass('only1');
+            }
+                // in case none is available, do not display upper border for the research category if any
+            else if (researchExists) {
+                $(researchRow).addClass('only1');
+            }
+        });
+    </script>
+<div class="clear"></div>
+                    <div class="article_page_left">
+                        <div class="text_info">
+                            
+                                
+                            
+
+
+
+
+
+
+<script type='text/javascript'>
+
+    var JSi18n = JSi18n || {}; // define only if not already defined
+    JSi18n.re = 'Re:';
+    JSi18n.errorSubject = 'Please enter a subject.';
+    JSi18n.errorBody = 'You can not post a blank message. Please type your message and try again.';
+    JSi18n.errorInvalidLinks = 'A mensagem contém links inválidos. Por favor reveja o texto e tente novamente.';
+    JSi18n.stopWatchText = 'Stop Watching Thread';
+    JSi18n.startWatchText = 'Watch Thread';
+    JSi18n.timeExpiredMessage = 'O tempo de edição de cinco minutos expirou. Pedimos  desculpas pela inconvenência.';
+    JSi18n.repostButtonFormat = 'Reenviar ($m left)';
+    JSi18n.timeExpiredButton = 'Tempo expirado';
+    JSi18n.sessionExpiredMessage = 'Sua sessão expirou. Por favor faça novamente o login e resubmeta suas informações outra vez.';
+    JSi18n.editLinkFormat = 'Editar ($m minutos remanescentes)';
+    JSi18n.enter_subject = 'Forneça um assunto';
+    JSi18n.enter_message = 'Mensagem';
+    JSi18n.relativeTimes_prefixAgo = 'há';
+    JSi18n.relativeTimes_prefixFromNow = '';
+    JSi18n.relativeTimes_suffixAgo = '';
+    JSi18n.relativeTimes_suffixFromNow = 'a partir de agora';
+    JSi18n.relativeTimes_seconds = 'menos de um minuto';
+    JSi18n.relativeTimes_minute = 'cerca de um minuto';
+    JSi18n.relativeTimes_minutes = '%d minutos';
+    JSi18n.relativeTimes_hour = 'cerca de uma hora';
+    JSi18n.relativeTimes_hours = 'cerca de %d horas';
+    JSi18n.relativeTimes_day = 'um dia';
+    JSi18n.relativeTimes_days = '%d dias';
+    JSi18n.relativeTimes_month = 'cerca de um mês';
+    JSi18n.relativeTimes_months = '%d meses';
+    JSi18n.relativeTimes_year = 'cerca de um ano';
+    JSi18n.relativeTimes_years = '%d anos';
+
+    var forumID = 1;
+    var threadID = 29558;
+    var ctxPath = '';
+    var postAddress = ctxPath + '/forum/post!post.action?language=' + 'pt';
+    var repostAddress = ctxPath + '/forum/repost.action?language=' + 'pt';
+    var postAddWatches = ctxPath + '/forum/watches!add.action';
+    var postRemoveWatches = ctxPath + '/forum/watches!remove.action';
+    var loggedIn = true;
+    var threadWatched = false;
+
+    var forumNotificationDefault = false;
+
+
+    var commentEditPeriod = 5;
+</script>
+
+<script type="text/javascript" src='/dwr/interface/ForumNotifications.js'></script>
+<script type="text/javascript" src='/scripts/jquery/jquery.timeago.js'></script>
+<script type="text/javascript" src='/scripts/ui/jquery.autosize.js'></script>
+<script type="text/javascript" src='/scripts/date.js'></script>
+
+    <div class="comment_here">
+        <div id="postFormDeck" >
+            <div id="deckText">
+                <h2>Olá visitante</h2>
+                Você precisa <a href="/reginit.action">cadastrar-se no InfoQ Brasil</a> ou
+                <a class="login" href="javascript:;">Login</a> para enviar comentários. Há muitas vantagens em se cadastrar.<br/>
+                <div id="getMost"><h2>Obtenha o máximo da experiência do InfoQ Brasil.</h2></div>
+            </div>
+        </div>
+        <a id="theCommentsSection"></a>
+        <h3>Dê sua opinião</h3>
+        <form onsubmit="return false;" target="" enctype="multipart/form-data" method="post" action="" name="">
+            <div class="area" name="comments">
+                <input type="text" id="subject" value=""/>
+                <textarea id="body"></textarea>
+            </div>
+
+            <div class="clear"></div>
+            <p class="allowed">HTML é permitido: a,b,br,blockquote,i,li,pre,u,ul,p</p>
+            <input type="checkbox" class="checkReply emailMe" name="emailMe">
+            <span class="tocheck">Receber menssagens dessa discussão</span>
+            <div class="clear"></div>
+            <input type="button" value="Enviar mensagem" class="submit" id="subButton">
+        </form>
+        <div class="clear"></div>
+    </div>
+    <div class="comments">
+        <div class="comments_title">Comentários da comunidade 
+                <span id="watch">
+                    <a href="javascript:void(0)" class="watch_thread"></a>
+                </span>
+            </div>
+        <div class="clear"></div>
+        
+    </div>
+
+    <div class="all_comments">
+        
+    </div>
+
+    <!-- overlay -->
+    <div id="overlay_comments">
+        <a href="javascript:;" class="close_comment" title="">Fechar</a>
+        <h4><strong></strong> by <span id='author'></span> <span id="timepast"></span></h4>
+        <p id="P1"/>
+        <div class="alt">
+            <span>em <span id="timestamp"></span></span>
+        </div>
+
+        <div class="clear"></div>
+        <ul class="help_links">
+            <li><a title="" class="view">Visualizar</a></li>
+            <li><a title="" href="javascript:;" class="reply">Responder</a></li>
+            <li><a title="" href="#" class="backtop">Voltar ao topo</a></li>
+        </ul>
+
+        <div class="clear"></div>
+
+    </div>
+    <!-- reply box -->
+    <div id="replyPopup" class="popupLoginComments">
+        <a title="" class="close_login_popup" href="javascript:;">Fechar</a>
+
+        <form onsubmit="return false;" target="" action="" name="tpopup-reply" method="post">
+            <label class="label_login">Assunto</label>
+            <input type="text" class="login_text subject" name="subject">
+            <label class="label_login">
+            	Sua resposta
+            	<a style="float: right; text-decoration: underline; font-weight: normal; color: grey;" href="#" onclick="CommentsHandler.quoteOriginalMessage();return false;">
+            		Citar mensagem original
+            	</a>
+            </label>
+            <textarea class="commentsReply" name="commentsReply"></textarea>
+            <div class="clear"></div>
+            <p class="error allowed"></p>
+            <div class="clear"></div>
+            <p class="allowed">HTML é permitido: a,b,br,blockquote,i,li,pre,u,ul,p</p>
+            <input type="checkbox" class="checkReply emailMe" name="emailMe">
+            <span class="tocheck">Receber menssagens dessa discussão</span>
+            <div class="clear"></div>
+            <input type="button" id="submit-reply" name="submit-reply" value="Enviar mensagem">
+            <input type="reset" class="reset-reply" name="reset-reply" value="Cancelar">
+        </form>
+    </div>
+    <!-- edit comment box -->
+    <div id="editCommentPopup" class="popupLoginComments">
+        <a title="" class="close_login_popup" href="javascript:;">Fechar</a>
+
+        <form onsubmit="return false;" target="" action="" name="tpopup-reply" method="post">
+            <label class="label_login">Assunto</label>
+            <input type="text" class="login_text subject" name="subject">
+            <label class="label_login">Sua resposta</label>
+            <textarea class="commentsReply" name="commentsReply"></textarea>
+            <div class="clear"></div>
+            <p class="error allowed"></p>
+            <div class="clear"></div>
+            <p class="allowed">HTML é permitido: a,b,br,blockquote,i,li,pre,u,ul,p</p>
+            <input type="checkbox" class="checkReply emailMe" name="emailMe">
+            <span class="tocheck">Receber menssagens dessa discussão</span>
+            <div class="clear"></div>
+            <p class="time_expired allowed"></p>
+            <input type="button" id="resubmit-reply" name="submit-reply" value="">
+            <input type="reset" class="reset-reply" name="reset-reply" value="Cancelar">
+        </form>
+    </div>
+    <!-- notification popup -->
+    <div id="messagePopup" class="popupLoginComments">
+        <a title="" class="close_login_popup" href="javascript:;">Fechar</a>
+        <div class="clear"></div>
+        <p class="allowed"></p>
+        <div class="clear"></div>
+        <input type="reset" class="reset-reply" name="reset-reply" value="OK">
+    </div>
+    <div id="responseContent"></div>
+    <a id="noOfComments" title="" href="#theCommentsSection" class="comments_like">
+        
+        
+            Dê sua opinião
+        
+    </a>
+
+                        </div>
+
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                
+                
+                <div class="rightS">
+                    <div class="article_page_right">
+                        
+
+
+
+
+
+
+
+<div id="mostPopularSection" class="news_in_tabs">
+	<!-- the tabs -->
+	<ul class="tabs">
+		
+			<li><div class="tab_title">Populares</div></li>
+			<li><a href="javascript:;" class="current">Semana</a></li>
+			<li><a href="javascript:;">Mês</a></li>
+			<li><a href="javascript:;">Seis meses</a></li>
+				
+	</ul>
+	<!-- tab "panes" -->
+	<div class="panes">
+	</div>
+	<div class="clear"></div>
+</div>
+                        <div class="clear"></div>
+                        <div class="commercials">
+                            <div class="banner_type1 margintop" id="id_300x250_banner_bottom">
+                                <script type='text/javascript'>
+                                    googletag.cmd.push(function () { googletag.display('id_300x250_banner_bottom'); });
+                                </script>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="clear"></div>
+        </div>
+
+		
+
+
+		
+
+		
+        
+
+
+
+
+
+
+
+
+
+
+
+	<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=infoq"></script>
+
+        <div id="imgPreload"></div>
+    <script type="text/javascript">if (!NREUMQ.f) { NREUMQ.f = function () { NREUMQ.push(["load", new Date().getTime()]); var e = document.createElement("script"); e.type = "text/javascript"; e.async = true; e.src = "https://d1ros97qkrwjf5.cloudfront.net/42/eum/rum.js"; document.body.appendChild(e); if (NREUMQ.a) NREUMQ.a(); }; NREUMQ.a = window.onload; window.onload = NREUMQ.f; }; NREUMQ.push(["nrf2", "beacon-1.newrelic.com", "bfafe6a5f6", 410411, "YAFWMEEAW0RUVk1cCllLfjdjTkVFUEZcWxFWEF0LXRIaRF1aThsPRBQ=", 0, 127, new Date().getTime()])</script>
+		</div>
+		<!--	#######		CONTENT END	#########	 -->
+		
+		<div class="clear"></div>
+	</div>
+	<!--	#######		SITE END	#########	 -->
+
+	
+
+
+
+
+
+
+
+<!--	#######		FOOTER START	#########	 -->
+<div id="footer">
+	<div class="footer_bg">
+		<div id="latestContent" class="footer_class"></div>
+		<div class="clear"></div>
+	</div>
+			
+	<div class="footer">
+		<ul class="footerMenu">
+		  	<li class="l1"><a class="active" href="/br/" title="Início">Início</a></li>
+		  	<li class="l2"><a class="active" href="/br/topics" title="Todos os tópicos">Todos os tópicos</a></li>
+			<li class="l3"><a href="http://www.qconferences.com/" target="_blank" title="Conferências QCon">Conferências QCon</a></li>
+	        
+		  	
+				<li class="l5"><a href="/br/logout.action" title="Sair">Sair</a></li>
+			
+			
+		</ul>
+			
+      	
+
+
+
+
+
+
+
+<ul class="footerTxt1">
+	<li><strong>Parceiros</strong></li>
+	<li><a target="_blank" href="http://www.casadocodigo.com.br"><img src="http://cdn2.infoq.com/images/sponsors/br/CasaDoCodigo_small.png"/></a></li>
+	
+	
+</ul>
+
+      	
+		
+
+
+
+
+
+
+
+
+<div class="ftxt3">
+	<div class="newsletter">
+		<div class="txtNews">
+			<h3>Newsletter do InfoQ Brasil</h3>
+			<p>Assine nossa newsletter semanal para acompanhar o novo conteúdo publicado no site e outros destaques</p>
+			<span id="footerNewsletterEmailSuccess" style="color:green;"></span>
+			<span id="footerNewsletterEmailError" style="color:red;"></span>
+		</div>
+		<div class="click2view">
+			<a target="_blank" href="/br/newsletter_sample.html">
+				<img src="http://cdn3.infoq.com/styles/i/click2view2.jpg" alt="" border="0" />
+			</a>
+		</div>
+		<div class="clear"></div>
+		<form name="footerNewsletterForm" id="footerNewsletteForm" action="#" onsubmit="footerNewsletter.saveSubscription(); return false;">
+			<fieldset>
+				<input type="text" class="input_text" id="footerNewsletterEmail" name="footerNewsletterEmail" value="Seu email aqui" 
+		            	onclick="footerNewsletter.clearEmailText();" onblur="footerNewsletter.resetEmailText();" />
+				<input type="submit" value="Subscribe" id="sbs" name="sbs" class="input_submit" onclick="return footerNewsletter.validateEmail();"/>
+			</fieldset>
+		</form>
+		<div class="clear"></div>
+	</div>
+	<ul class="footerTxt3">
+		<li><a class="rss" id="footerNewsletterRssLink" href="#">Seu RSS personalizado</a></li>
+	    
+	    
+			<li><a class="twitter" href="http://twitter.com/infoqbrasil" target="_blank">Para atualizações diárias e outras novidades</a></li>
+	    
+		<li><a class="fb" href="http://www.facebook.com/InfoQBrasil" target="_blank">Para atualizações frequentes e notícias da comunidade</a></li>
+	</ul>
+</div>
+<script type="text/javascript">
+    var footerNewsletter = new Newsletter('Seu email aqui', 'footerNewsletterEmail', 'footerNewsletterForm', 'footerNewsletterEmailError', 'footerNewsletterEmailSuccess');
+</script>
+			
+			
+		<div class="our_events">
+	      	
+
+
+
+
+
+
+
+
+
+			
+			<div class="communities">
+				<p>Configure seus principais interesses</p>
+				<br/><br/><br/>
+				<fieldset>
+					<ul>
+			        	
+
+
+
+
+
+
+
+<fieldset>
+	<table cellpadding="0" cellspacing="0" border="0" width="100%">
+		
+			<tr>
+				<td valign="middle">
+					<input type="checkbox" name="development" value="true" checked="checked" id="persona6825" class="chb" onclick="includeExcludeCommunity(this, false);"/>
+
+					<span>Desenvolvimento</span>
+				</td>
+			</tr>
+		
+			<tr>
+				<td valign="middle">
+					<input type="checkbox" name="architecture-design" value="true" checked="checked" id="persona6826" class="chb" onclick="includeExcludeCommunity(this, false);"/>
+
+					<span>Arquitetura e Design</span>
+				</td>
+			</tr>
+		
+			<tr>
+				<td valign="middle">
+					<input type="checkbox" name="process-practices" value="true" checked="checked" id="persona6827" class="chb" onclick="includeExcludeCommunity(this, false);"/>
+
+					<span>Processos e Pr&#xE1;ticas</span>
+				</td>
+			</tr>
+		
+			<tr>
+				<td valign="middle">
+					<input type="checkbox" name="operations-infrastructure" value="true" checked="checked" id="persona6828" class="chb" onclick="includeExcludeCommunity(this, false);"/>
+
+					<span>Opera&#xE7;&#xF5;es e Infraestrutura</span>
+				</td>
+			</tr>
+		
+			<tr>
+				<td valign="middle">
+					<input type="checkbox" name="enterprise-architect" value="true" checked="checked" id="persona6829" class="chb" onclick="includeExcludeCommunity(this, false);"/>
+
+					<span>Arquitetura Corporativa</span>
+				</td>
+			</tr>
+		
+	</table>
+</fieldset>
+
+					</ul>						
+				</fieldset>
+			</div>
+		</div>
+			
+		<div class="clear"></div>
+			
+	</div>
+	
+	<div class="clear"></div>
+</div>
+<!--	#######		FOOTER END	#########	 -->
+
+<div class="bottomContent">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="last_content">
+		<tr>
+			<td>
+				<div>Feedback geral</div> 
+				<div><a href="mailto:feedback-br@infoq.com">feedback-br@infoq.com</a></div>
+			</td>
+			<td>
+				<div>Bugs</div> 
+				<div><a href="mailto:bugs-br@infoq.com">bugs-br@infoq.com</a></div>
+			</td>
+			<td>
+				<div>Publicidade</div> 
+				<div><a href="mailto:publicidade-br@infoq.com">publicidade-br@infoq.com</a></div>
+			</td>
+			<td>
+				<div>Editorial</div> 
+				<div><a href="mailto:editor-br@infoq.com">editor-br@infoq.com</a></div>
+			</td>
+			<td class="text">
+				<span>InfoQ Brasil e todo o seu conteúdo: todos os direitos reservados. &#169; 2006-2013 C4Media Inc.<br/><a href="/br/privacypolicy" target="_blank">Política de privacidade</a></span>
+			</td>
+		</tr>
+	</table>
+</div>
+
+	
+	
+
+
+
+
+
+
+
+
+<div id="id_geo_banner" style="display:none;position:fixed;bottom:0;left:0;width:100%;z-index:100000;">
+	<div id="id_geo_banner_ad" style="display:none;">
+		<script type='text/javascript'>
+		    if (CookieManager.readCookie("igabgt") == null) {
+		        // use the jquery.watch method to see when GAM changes the display css attribute of id_geo_banner_ad
+		        // whenever an ad is placed there GAM will chnage the display which is init as none. This is the safest way to determine when an ad is fetched by GAM!
+		        $("#id_geo_banner_ad").watch('display', showAd, 1000);
+		        googletag.cmd.push(function () { googletag.display('id_geo_banner_ad'); });
+		    }
+		    function showAd() {
+		        try {
+		            $('#id_geo_banner iframe:first').attr('width', '100%');
+		            $('#id_geo_banner iframe:first').attr('height', '100%');
+		            $('#id_geo_banner iframe:first').css('min-width', '1024px');
+		        } catch (err) { }
+		        $('#id_geo_banner').show('slow');
+		        setTimeout("$('#id_geo_banner').hide('slow');", 30000);
+		    }
+		</script>
+	</div>
+</div>
+
+	<script src="/dwr/engine.js" type="text/javascript"></script>
+	<script src="/dwr/interface/UserCategoryUtil.js" type="text/javascript"></script>
+	<script src="/dwr/interface/DWRRewriteAction.js" type="text/javascript"></script>
+	
+
+
+
+
+
+
+
+<iframe name="loginFrame" id="loginFrame" style="width:0;height:0;border:0;"></iframe>
+<div class="login_overlay" id="loginWidget" style="display:none;">
+	<!--	html for login box	-->
+	<input type="hidden" id="loginWidgetOrigin"/>
+	<div id="Div1">
+		<a title="" class="close_login_flat" href="#" onclick="UserActions_Login.hideLoginWidget();return false;" >Close</a>
+		<form method="post" id="login_formLogin" 
+			  action="https://www.infoq.com/br/login.action" 
+			  target="loginFrame" onsubmit="UserActions_Login.showMessage(JSi18n.login_sendingRequest);">
+			<label class="label_login">Email</label>
+			<input type="text" name="username" id="login_username" class="login_text" />
+			<label class="label_login">Senha</label>
+			<input type="password" name="password" id="login_password" class="login_text" />
+			<input type="submit" value="" name="submit-login" class="submit-login" />
+			<div id="socialLogin">
+	            	        	
+	        		<a class="social-idp google" href="/br/social/googleLogin.action?fl=login" title="Login with Google">Login with Google</a>
+	        		<div class="clearer" style="height: 0px;"></div>
+	        	
+	        		
+	        			<a class="social-idp twitter" href="/br/social/twitterLogin.action?fl=login" title="Login with Twitter">Login with Twitter</a>
+	        			<div class="clearer" style="height: 0px;"></div>
+	        	
+	        			<a class="social-idp facebook" href="/br/social/facebookLogin.action?fl=login" title="Login with Facebook">Login with Facebook</a>
+	        			<div class="clearer" style="height: 0px;"></div>
+	        		
+	        	
+	           		<a class="social-idp microsoft" href="/br/social/liveLogin.action?fl=login" title="Login with Microsoft Account">Login with Microsoft Account</a>
+	        		<div class="clearer" style="height: 0px;"></div>
+	            
+	        </div>
+			<div class="more_links">
+				<p>
+					<a style="text-decoration:none;" href="#" onClick="UserActions_Login.showForgotPasswordForm();return false;">
+						Esqueceu a senha?
+					</a>
+					<br/><br/>
+				</p>
+			</div>
+		</form>
+		
+		<form method="post" id="login_formPasswordReset" 
+			  action="/br/resetpasswordinit.action" 
+			  target="loginFrame" style="display:none;" onsubmit="UserActions_Login.showMessage(JSi18n.login_sendingRequest);">
+			<label class="label_login">Email de sua conta no InfoQ Brasil</label>
+			<input type="text" name="email" id="login_email" class="login_text" />
+			<button type="submit" name="submit-login" style="border: 1px solid #CCCCCC; width: 100%; padding: 8px 5px;" on>Enviar email</button>
+			<div class="more_links">
+				<p>
+					<a style="text-decoration:none;" href="#" onClick="UserActions_Login.showLoginForm();return false;">
+						Voltar ao login
+					</a>
+					<br/><br/>
+				</p>
+			</div>
+		</form>
+		<form method="post" id="login_formEmailVerification" 
+			  action="/br/reactivate.action" 
+			  target="loginFrame" style="display:none;" onsubmit="UserActions_Login.showMessage(JSi18n.login_sendingRequest);">
+			<label class="label_login">Reenviar ativação</label>
+			<input type="text" name="email" id="login_emailVerification" class="login_text" />
+			<button type="submit" name="submit-login" style="border: 1px solid #CCCCCC; width: 100%; padding: 8px 5px;" on>Reenviar</button>
+			<div class="more_links">
+				<p>
+					<a style="text-decoration:none;" href="#" onClick="UserActions_Login.showLoginForm();return false;">
+						Voltar ao login
+					</a>
+					<br/><br/>
+				</p>
+			</div>
+		</form>
+		<div class="more_links">
+			<p><a href="/br/reginit.action" title="">Não tem um nome de usuário?</a></p>
+			<p><a href="/br/reginit.action" title="">Faça seu cadastro</a></p>
+			<div style="padding:5px;background:#EBF0F3;margin-top:45px;display:none;" id="loginPopupMessage"></div>
+		</div>
+	</div>
+	<!--	html for login box 	-->
+</div>
+
+	
+
+
+
+
+
+
+<script type="text/javascript">
+    var includeName = 'content.inline_personalization.include.label';
+    var excludeName = 'content.inline_personalization.exclude.label';
+    var includeHint = 'content.inline_personalization.include.hint';
+    var excludeHint = 'content.inline_personalization.exclude.hint';
+    var excludeCategoryMessage = 'content.inline_personalization.exclude.message';
+    var viewallCategoryMessage = 'content.inline_personalization.view_all.hint';
+    var busyMessage = 'content.inline_personalization.busy.message';
+    var contextPath = '' + '/';
+    var viewallCategoryPath = '';
+    var includeExcludeLink = true;
+</script>
+
+	
+
+
+
+
+
+
+<script type="text/javascript">
+    var gaProfile = "UA-6608133-2";
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', gaProfile]);
+    _gaq.push(['_setLocalGifPath', 'http://www.infoq.com/styles/i/__utm.gif']);
+    _gaq.push(['_setLocalRemoteServerMode']);
+    _gaq.push(['_trackPageview']);
+
+    (function () {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+</script>
+<script src="http://cdn4.infoq.com/scripts/tracker.js?20121126" type="text/javascript"></script>
+<script type="text/javascript">
+    Tracker.safeExec(function () {
+
+        _gaq.push(["_trackEvent", "userregistered", "true"]);
+
+
+    });
+    Tracker.safeExec(function () { _gaq.push(["_trackEvent", "userprefs", "2"]); });
+    Tracker.safeExec(Tracker.doTrackVcrImpressions);
+    Tracker.safeExec(Tracker.doTrackPresentationDefaultDisplay);
+    Tracker.safeExec(Tracker.doTrackTaxonomyImpressions);
+    Tracker.safeExec(Tracker.doTrackAuthorImpressions);
+</script>
+
+	
+
+
+
+
+
+
+
+
+<script type="text/javascript">
+    $('#home_grid').show();
+    var newsletterSubscriptionURL = '/br/newsletter/subscribe.action';
+    DynamicLinks.updateRssLinks('zdxVlyFnFrH5ZSpNWQFGMrRiYiFHC9Lx');
+    ContentTools.updateLatestContentSection();
+    ContentTools.updatePersonaDropdowns();
+
+    // only get the most popular links if they are used in the current page
+    //(so far they are used on homepage, inteview and presentation pages)
+    if ($('#mostPopularSection').length) {
+        ContentTools.updateMostPopular();
+    }
+
+    ContentSummary.setSelectedTab('pt');
+    //when user enters the main content area show default topics in the topics bar
+    $("#content-wrapper").mouseenter(function () {
+        showDefaultTopics();
+    });
+
+
+    Bookmarks.contentTitle = "Criando apps Android flex&#xED;veis e f&#xE1;ceis de manter";
+    Bookmarks.apiUrl = '/widgets/bookmark.action';
+</script>
+<script type="text/javascript">
+    var $buoop = { vs: { i: 6, f: 1, o: 10.1, s: 1 } }
+    $buoop.ol = window.onload;
+    $(document).ready(function () {
+        try { if ($buoop.ol) $buoop.ol(); } catch (e) { }
+        var e = document.createElement("script");
+        e.setAttribute("type", "text/javascript");
+        e.setAttribute("src", "http://browser-update.org/update.js");
+        document.body.appendChild(e);
+    });
+</script>
+</div>
+</body>
+</html>
+
